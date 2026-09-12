@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!-- ══════════════════════════════════════════════════════════════════════
+     PAGE : Associations membres   (fichier : associations.html)
+     Contenu repris de la section #map du fichier d'origine.
+
+     COMMENT CETTE PAGE EST CONSTRUITE (toujours le meme ordre) :
+       1. <head>        : titre, description, polices, librairies externes
+       2. HEADER        : logo + menu (identique sur TOUTES les pages)
+       3. CONTENU       : la ou seule cette page est differente
+       4. FOOTER        : pied de page (identique sur TOUTES les pages)
+       5. <script>      : les 2 fichiers JS communs, toujours en dernier
+
+     REGLE D'OR : si tu modifies le HEADER ou le FOOTER ici, il faut
+     reporter la meme modification dans les 5 pages (ou repartir de
+     partials/header.html et partials/footer.html qui sont les modeles).
+     ══════════════════════════════════════════════════════════════════ -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Titre affiche dans l'onglet du navigateur + resultats Google -->
+<title>LUNACOF — Associations membres</title>
+<!-- Texte affiche sous le titre dans les resultats Google (160 caracteres max) -->
+<meta name="description" content="Carte et annuaire des associations comoriennes membres de LUNACOF partout en France." />
+
+<!-- Polices Google + librairies externes (icones Lucide, React pour le panneau
+     de reglages). Bloc identique sur toutes les pages, ne pas y toucher. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- TOUT LE STYLE DU SITE EST ICI (fichier partage par les 5 pages).
+     Modifier une couleur ou une taille dans assets/css/style.css
+     change automatiquement les 5 pages. -->
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  1. HEADER — barre du haut : logo, menu, boutons, menu mobile    ║
+     ║  Modele de reference : partials/header.html                      ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<header class="site" id="top">
+  <div class="nav">
+    <a href="index.html" class="logo" aria-label="LUNACOF — Accueil">
+      <span class="logo-mark" aria-hidden="true">
+        <!-- crescent + 4 dots, original -->
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M22 22a9 9 0 1 1 0-12" stroke="#F4B400"/>
+          <circle cx="14" cy="10" r="1.2" fill="#F4B400" stroke="none"/>
+          <circle cx="14" cy="14" r="1.2" fill="#F4B400" stroke="none"/>
+          <circle cx="14" cy="18" r="1.2" fill="#F4B400" stroke="none"/>
+          <circle cx="14" cy="22" r="1.2" fill="#F4B400" stroke="none"/>
+        </svg>
+      </span>
+      <div class="stack">
+        LUN<span class="accent">A</span>COF
+        <small>Union des Associations Comoriennes de France</small>
+      </div>
+    </a>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="federation.html">La fédération</a>
+      <a href="associations.html" class="active">Associations membres</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="adherer.html">Adhérer</a>
+      <a href="#footer">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#" class="btn btn-outline"><i data-lucide="user" class="ic"></i>Espace membre</a>
+      <a href="adherer.html" class="btn btn-gold primary-cta">Adhérer</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span class="bar"></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="index.html">Accueil <span class="arr">→</span></a>
+  <a href="federation.html">La fédération <span class="arr">→</span></a>
+  <a href="associations.html">Nos associations membres <span class="arr">→</span></a>
+  <a href="actualites.html">Actualités <span class="arr">→</span></a>
+  <a href="adherer.html">Adhérer <span class="arr">→</span></a>
+  <a href="#footer">Contact <span class="arr">→</span></a>
+  <div class="mobile-cta">
+    <a href="#" class="btn btn-outline" style="justify-content:center"><i data-lucide="user" class="ic"></i>Espace membre</a>
+    <a href="adherer.html" class="btn btn-gold" style="justify-content:center">Adhérer en ligne</a>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  2. CONTENU DE LA PAGE                                           ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<!-- ■■■ SECTION : CARTE DES ASSOCIATIONS ■■■
+     Role : carte de France en SVG + points cliquables + formulaire de recherche
+     -->
+
+<!-- AJOUTER UNE ASSOCIATION SUR LA CARTE :
+     copier une ligne <button class="pin" ...> et changer :
+       data-name = nom de l'association
+       data-city = ville
+       data-tag  = thematique et nombre de membres
+       style="top:..%;left:..%" = position du point sur la carte
+     La classe "green" (class="pin green") sert au siege federal. -->
+
+<section class="section map-section" id="map">
+  <div class="container">
+    <div class="map-head reveal">
+      <div>
+        <span class="eyebrow">Notre réseau</span>
+        <h2>Nos associations partout en France.</h2>
+      </div>
+      <p style="max-width:380px">Survolez les villes pour découvrir les associations membres ou utilisez la recherche pour explorer notre réseau.</p>
+    </div>
+
+    <div class="map-grid">
+      <div class="map-wrap reveal">
+        <!-- Original simplified France SVG silhouette -->
+        <svg class="map-svg" viewBox="0 0 500 520" aria-label="Carte de France">
+          <path d="M180 40 C 220 30, 270 35, 310 50 L 340 70 C 360 80, 380 95, 395 115 L 410 140 C 420 165, 430 195, 425 225 L 440 240 C 460 245, 478 260, 478 285 C 478 305, 460 318, 442 320 L 430 340 C 420 365, 400 380, 380 392 L 360 410 C 350 430, 330 445, 310 458 L 280 472 L 250 480 C 230 488, 210 488, 190 480 L 165 470 C 145 460, 128 445, 115 425 L 100 405 C 88 385, 80 365, 75 342 L 65 325 C 50 310, 35 295, 30 275 C 25 250, 35 230, 50 218 L 70 205 C 80 180, 88 155, 100 135 L 115 115 C 130 90, 150 65, 180 40 Z" />
+          <!-- Corsica -->
+          <path d="M438 405 C 446 405, 452 415, 452 430 L 452 460 C 452 472, 446 478, 438 478 C 430 478, 425 472, 425 460 L 425 425 C 425 415, 430 405, 438 405 Z"/>
+        </svg>
+
+        <!-- Pins (positioned in % over the SVG bounding box) -->
+        <button class="pin" data-name="Union Comorienne d'Île-de-France" data-city="Paris" data-tag="Représentation · 5 800 membres" style="top:20%;left:50%"></button>
+        <button class="pin green" data-name="Association Comorienne de Marseille" data-city="Marseille" data-tag="Culture & jeunesse · 12 000 membres" style="top:78%;left:64%"></button>
+        <button class="pin" data-name="Diaspora Comorienne de Lyon" data-city="Lyon" data-tag="Co-développement · 3 200 membres" style="top:55%;left:62%"></button>
+        <button class="pin" data-name="Comores Solidarité Lille" data-city="Lille" data-tag="Solidarité · 1 100 membres" style="top:14%;left:53%"></button>
+        <button class="pin" data-name="Association Toulousaine des Comoriens" data-city="Toulouse" data-tag="Culture · 1 800 membres" style="top:78%;left:42%"></button>
+        <button class="pin" data-name="Comores Aquitaine" data-city="Bordeaux" data-tag="Co-développement · 900 membres" style="top:62%;left:30%"></button>
+        <button class="pin" data-name="Diaspora Comorienne de Montpellier" data-city="Montpellier" data-tag="Jeunesse · 1 400 membres" style="top:74%;left:54%"></button>
+        <button class="pin" data-name="Union Comorienne Côte d'Azur" data-city="Nice" data-tag="Culture · 1 700 membres" style="top:72%;left:78%"></button>
+        <button class="pin" data-name="Association Comorienne de Nantes" data-city="Nantes" data-tag="Solidarité · 700 membres" style="top:42%;left:28%"></button>
+
+        <div class="tooltip" id="tooltip"><b>—</b><span></span><div class="tag">—</div></div>
+      </div>
+
+      <aside class="search-card reveal reveal-d2">
+        <h3>Trouver une association</h3>
+        <p class="sub">Recherchez par ville, thématique ou nom d'association.</p>
+        <div class="input"><i data-lucide="search"></i><input placeholder="Nom de l'association..." /></div>
+        <div class="input"><i data-lucide="map-pin"></i>
+          <select><option>Toutes les villes</option><option>Paris</option><option>Marseille</option><option>Lyon</option><option>Lille</option><option>Toulouse</option><option>Bordeaux</option><option>Montpellier</option><option>Nice</option></select>
+        </div>
+        <div class="input"><i data-lucide="layers"></i>
+          <select><option>Toutes les thématiques</option><option>Culture & jeunesse</option><option>Solidarité</option><option>Co-développement</option><option>Représentation</option></select>
+        </div>
+        <button class="btn btn-primary">Rechercher <i data-lucide="search" class="ic"></i></button>
+
+        <div class="legend">
+          <div class="row"><b>9 villes principales</b><span class="muted" style="color:var(--muted)">30+ associations</span></div>
+          <div class="row"><div class="swatch"><span class="sw" style="background:var(--gold)"></span> Antenne membre</div><span style="color:var(--muted)">Active</span></div>
+          <div class="row"><div class="swatch"><span class="sw" style="background:var(--green)"></span> Siège fédéral</div><span style="color:var(--muted)">Marseille</span></div>
+        </div>
+
+        <a href="#" class="btn btn-ghost" style="margin-top:18px;padding-left:0">Voir toutes les associations <i data-lucide="arrow-right" class="ic"></i></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  3. FOOTER — pied de page + coordonnees (ancre #footer = Contact)║
+     ║  Modele de reference : partials/footer.html                      ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<footer id="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="foot-logo" href="index.html">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="#F4B400" stroke-width="2.2" stroke-linecap="round">
+              <path d="M22 22a9 9 0 1 1 0-12"/>
+              <circle cx="14" cy="10" r="1.2" fill="#F4B400" stroke="none"/>
+              <circle cx="14" cy="14" r="1.2" fill="#F4B400" stroke="none"/>
+              <circle cx="14" cy="18" r="1.2" fill="#F4B400" stroke="none"/>
+              <circle cx="14" cy="22" r="1.2" fill="#F4B400" stroke="none"/>
+            </svg>
+          </span>
+          LUNACOF
+        </a>
+        <p>Union des Associations Comoriennes de France. Une fédération au service de la diaspora, reconnue par les institutions françaises et comoriennes.</p>
+        <div class="socials" aria-label="Réseaux sociaux">
+          <a href="https://www.facebook.com/unacof269/" target="_blank" rel="noopener" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="federation.html">La fédération</a></li>
+          <li><a href="index.html#missions">Nos missions</a></li>
+          <li><a href="associations.html">Associations membres</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="adherer.html">Adhérer</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#"><i data-lucide="map-pin"></i> 15 rue de la Diaspora<br/>13003 Marseille, France</a></li>
+          <li><a href="mailto:contact@lunacof.fr"><i data-lucide="mail"></i> contact@lunacof.fr</a></li>
+          <li><a href="tel:+33491000000"><i data-lucide="phone"></i> +33 (0)4 91 00 00 00</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h5>Légal</h5>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique RGPD</a></li>
+          <li><a href="#">Gestion des cookies</a></li>
+          <li><a href="#">Statuts de la fédération</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div>© 2026 LUNACOF — Union des Associations Comoriennes de France
+        <span class="flag" aria-hidden="true">
+          <span style="background:var(--gold)"></span>
+          <span style="background:#fff"></span>
+          <span style="background:var(--red)"></span>
+          <span style="background:var(--green)"></span>
+        </span>
+      </div>
+      <div>Site institutionnel · Reconnu d'intérêt général</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  4. SCRIPTS — toujours a la fin, juste avant </body>             ║
+     ║  overrides.js : reglages de design (couleurs, polices, tailles)  ║
+     ║  main.js      : animations, menu mobile, compteurs, carte        ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<script src="assets/js/overrides.js"></script>
+<script src="assets/js/main.js"></script>
+<!-- PANNEAU DE REGLAGES DE DESIGN (optionnel, desactive)
+     Le fichier d'origine appelait 2 fichiers tweaks-panel.jsx et tweaks-app.jsx
+     qui n'ont pas ete fournis avec le site : les lignes ci-dessous sont donc
+     neutralisees pour eviter une erreur 404. Si tu recuperes les 2 fichiers,
+     pose-les a cote de index.html et sors les 2 lignes de ce commentaire :
+
+     script type="text/babel" src="tweaks-panel.jsx"
+     script type="text/babel" src="tweaks-app.jsx"
+-->
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- ═══════════════════════════════════════════════════════════════════
+     MODELE DE HEADER — ne s'affiche pas tout seul.
+     C'est la version de reference du menu : si tu ajoutes un lien,
+     modifie-le ICI puis recopie le bloc dans les 5 pages HTML.
+
+     Les liens du menu pointent vers les fichiers :
+       index.html / federation.html / associations.html /
+       actualites.html / adherer.html / #footer (contact du bas de page)
+
+     class="active" = lien en surbrillance ; il doit etre sur le lien
+     de la page affichee, et sur un seul.
+     ═══════════════════════════════════════════════════════════════ -->
+<header class="site" id="top">
+  <div class="nav">
+    <a href="index.html" class="logo" aria-label="LUNACOF — Accueil">
+      <span class="logo-mark" aria-hidden="true">
+        <!-- crescent + 4 dots, original -->
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M22 22a9 9 0 1 1 0-12" stroke="#F4B400"/>
+          <circle cx="14" cy="10" r="1.2" fill="#F4B400" stroke="none"/>
+          <circle cx="14" cy="14" r="1.2" fill="#F4B400" stroke="none"/>
+          <circle cx="14" cy="18" r="1.2" fill="#F4B400" stroke="none"/>
+          <circle cx="14" cy="22" r="1.2" fill="#F4B400" stroke="none"/>
+        </svg>
+      </span>
+      <div class="stack">
+        LUN<span class="accent">A</span>COF
+        <small>Union des Associations Comoriennes de France</small>
+      </div>
+    </a>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="federation.html">La fédération</a>
+      <a href="associations.html">Associations membres</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="adherer.html">Adhérer</a>
+      <a href="#footer">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#" class="btn btn-outline"><i data-lucide="user" class="ic"></i>Espace membre</a>
+      <a href="adherer.html" class="btn btn-gold primary-cta">Adhérer</a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span class="bar"></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="index.html">Accueil <span class="arr">→</span></a>
+  <a href="federation.html">La fédération <span class="arr">→</span></a>
+  <a href="associations.html">Nos associations membres <span class="arr">→</span></a>
+  <a href="actualites.html">Actualités <span class="arr">→</span></a>
+  <a href="adherer.html">Adhérer <span class="arr">→</span></a>
+  <a href="#footer">Contact <span class="arr">→</span></a>
+  <div class="mobile-cta">
+    <a href="#" class="btn btn-outline" style="justify-content:center"><i data-lucide="user" class="ic"></i>Espace membre</a>
+    <a href="adherer.html" class="btn btn-gold" style="justify-content:center">Adhérer en ligne</a>
+  </div>
+</div>
